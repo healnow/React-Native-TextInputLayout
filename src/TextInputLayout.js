@@ -74,6 +74,12 @@ export default class TextInputLayout extends Component {
         this._oriOnFocus = edtChild.props.onFocus;
         this._oriOnBlur = edtChild.props.onBlur;
         this._oriOnChangeText = edtChild.props.onChangeText;
+        const textValue = edtChild.props.value
+        if (textValue) {
+            this._edtText = textValue
+            this.state.showLabel = true
+            this.state.labelAnimationValue = new Animated.Value(1)
+        }
 
         this._edtChild = React.cloneElement(edtChild, {
             onFocus: this._onFocus,
